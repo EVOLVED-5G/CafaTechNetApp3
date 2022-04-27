@@ -1,2 +1,4 @@
 
-In this directory the developer will add his code and explain what his NetApp consists of.
+The NetApp creates quaranteed bit rate subscription for discrete automation.
+The eqipment network identifier for NEF Emulator is 10.0.0.3.
+At start the app prompts for the local IP address.
