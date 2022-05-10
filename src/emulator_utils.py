@@ -28,4 +28,5 @@ def get_api_client(token) -> swagger_client.ApiClient:
 
 
 def get_host_of_the_nef_emulator() -> str:
+    # The 'localhost' must be replaced with the IP-address of the NEF Emulator
     return "http://localhost:8888"
