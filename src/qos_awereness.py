@@ -18,7 +18,7 @@ usage_threshold = UsageThreshold(duration= None, # not supported
                                 uplink_volume=5 * gigabyte  # 5 Gigabytes for uplink
                                 )
 
-notification_destination="http://172.17.0.2:5000/monitoring/callback"
+notification_destination="http://172.17.0.2:5555/monitoring/callback"
 
 def create_quaranteed_bit_rate_subscription_for_discrete_automation():
     discrete_automation = QosAwareness.GBRQosReference.DISCRETE_AUTOMATION
