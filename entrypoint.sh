@@ -1,5 +1,4 @@
 #!/bin/bash
-cd src
+cd netapp
 chmod +x start_flask.sh
-./start_flask.sh &
-python3 qos_awereness.py
+./start_flask.sh
