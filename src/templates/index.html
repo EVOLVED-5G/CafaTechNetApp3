@@ -1,0 +1,46 @@
+<title>CAFA NetApp</title>
+<style>
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 500px;
+    }
+    input {
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-bottom: 20px;
+      margin-left: 0px;
+    }
+</style>
+<body>
+    <h2>CAFA NetApp</h2>
+    <div id="input">
+        <form method="POST" enctype=multipart/form-data>
+            <div class="flex-container">
+                <h3>Change NEF and CAPIF credentials</h3>
+                NEF user name:
+                <input name="nef_user" value={{ data.nef_user }} size="30">
+                NEF password:
+                <input name="nef_pwd" value={{ data.nef_pwd }}>
+                NEF host (IP address and port):
+                <input name="nef_host" value={{ data.nef_host }} size="30">
+                CAPIF folder path for certificates and API key:
+                <input name="capif_cert_path" value={{ data.capif_cert_path }} size="30">
+                CAPIF host:
+                <input name="capif_host" value={{ data.capif_host }} size="30">
+                capifcore IP:
+                <input name="capifcore_ip" value={{ data.capifcore_ip }} size="30">
+                CAPIF port:
+                <input name="capif_port" value={{ data.capif_port }} size="30">
+                <input type="submit" name="button" value="SAVE NEF AND CAPIF CREDENTIALS">
+                <h3>NetApp registration to CAPIF</h3>
+                NetApp username:
+                <input name="netapp_user" value="netapp" size="30">
+                NetApp password:
+                <input name="netapp_pass" value="netapp_password" size="30">
+                <input type="submit" name="button" value="REGISTER NETAPP TO CAPIF">
+            </div>
+        </form>
+    </div>
+</body>
