@@ -36,7 +36,7 @@ def get_api_client(token) -> swagger_client.ApiClient:
 
 
 def get_url_of_the_nef_emulator() -> str:
-    return get_capif_and_nef_credentials("nef_host")
+    return f"http://{get_capif_and_nef_credentials('nef_ip_and_port')}"
 
 
 def get_folder_path_for_certificates_and_capif_api_key()->str:
@@ -56,3 +56,7 @@ def get_capif_host()->str:
 
 def get_capif_https_port()->int:
     return get_capif_and_nef_credentials("capif_port")
+
+
+def get_netapp_ip_and_port():
+    return get_capif_and_nef_credentials("netapp_ip_and_port")

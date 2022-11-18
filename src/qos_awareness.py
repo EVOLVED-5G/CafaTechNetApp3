@@ -2,8 +2,6 @@ from evolved5g.swagger_client.rest import ApiException
 from evolved5g.sdk import QosAwareness
 import emulator_utils
 from evolved5g.swagger_client import UsageThreshold
-import socket
-
 
 netapp_id = "CAFA-NetApp-3"
 
@@ -26,10 +24,8 @@ def create_quaranteed_bit_rate_subscription_for_discrete_automation(equipment_id
 
     network_identifier = QosAwareness.NetworkIdentifier.IP_V4_ADDRESS
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    netapp_ip_address = s.getsockname()[0]
-    notification_destination = f"http://{netapp_ip_address}:5555/nefcallbacks"
+    netapp_ip_and_port = emulator_utils.get_netapp_ip_and_port()
+    notification_destination = f"http://{netapp_ip_and_port}/nefcallbacks"
 
     discrete_automation = QosAwareness.GBRQosReference.DISCRETE_AUTOMATION
     

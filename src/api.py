@@ -47,9 +47,10 @@ def index():
 def index_post():
     if request.form.get("button") == "SAVE NEF AND CAPIF CREDENTIALS":
         capif_nef_credentials = {
+            "netapp_ip_and_port": request.form["netapp_ip_and_port"],
             "nef_user": request.form["nef_user"],
             "nef_pwd": request.form["nef_pwd"],
-            "nef_host": request.form["nef_host"],
+            "nef_ip_and_port": request.form["nef_ip_and_port"],
             "capif_cert_path": request.form["capif_cert_path"],
             "capif_host": request.form["capif_host"],
             "capifcore_ip": request.form["capifcore_ip"],
