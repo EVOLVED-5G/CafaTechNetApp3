@@ -1,7 +1,6 @@
 from evolved5g.swagger_client.rest import ApiException
 from evolved5g.sdk import ConnectionMonitor
 import emulator_utils
-import socket
 import datetime
 
 netapp_id = "CAFA-NetApp-3"
@@ -25,10 +24,8 @@ def create_connection_monitor_subscription(external_id):
     
     read_and_delete_all_existing_subscriptions()
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    netapp_ip_address = s.getsockname()[0]
-    notification_destination = f"http://{netapp_ip_address}:5555/nefcallbacks"
+    netapp_ip_and_port = emulator_utils.get_netapp_ip_and_port()
+    notification_destination = f"http://{netapp_ip_and_port}/nefcallbacks"
 
     subscription_when_not_connected = connection_monitor.create_subscription(
         netapp_id=netapp_id,

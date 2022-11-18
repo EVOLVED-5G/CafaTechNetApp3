@@ -4,13 +4,15 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      margin-left: 10px;
       width: 500px;
     }
     input {
       margin-top: 10px;
       margin-right: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       margin-left: 0px;
+      width: 250px;
     }
 </style>
 <body>
@@ -19,26 +21,28 @@
         <form method="POST" enctype=multipart/form-data>
             <div class="flex-container">
                 <h3>Change NEF and CAPIF credentials</h3>
+                NetApp IP address and port:
+                <input name="netapp_ip_and_port" value={{ data.netapp_ip_and_port }}>
                 NEF user name:
-                <input name="nef_user" value={{ data.nef_user }} size="30">
+                <input name="nef_user" value={{ data.nef_user }}>
                 NEF password:
                 <input name="nef_pwd" value={{ data.nef_pwd }}>
                 NEF host (IP address and port):
-                <input name="nef_host" value={{ data.nef_host }} size="30">
+                <input name="nef_ip_and_port" value={{ data.nef_ip_and_port}}>
                 CAPIF folder path for certificates and API key:
-                <input name="capif_cert_path" value={{ data.capif_cert_path }} size="30">
+                <input name="capif_cert_path" value={{ data.capif_cert_path }}>
                 CAPIF host:
-                <input name="capif_host" value={{ data.capif_host }} size="30">
+                <input name="capif_host" value={{ data.capif_host }}>
                 capifcore IP:
-                <input name="capifcore_ip" value={{ data.capifcore_ip }} size="30">
+                <input name="capifcore_ip" value={{ data.capifcore_ip }}>
                 CAPIF port:
-                <input name="capif_port" value={{ data.capif_port }} size="30">
+                <input name="capif_port" value={{ data.capif_port }}>
                 <input type="submit" name="button" value="SAVE NEF AND CAPIF CREDENTIALS">
                 <h3>NetApp registration to CAPIF</h3>
                 NetApp username:
-                <input name="netapp_user" value="netapp" size="30">
+                <input name="netapp_user" value="netapp">
                 NetApp password:
-                <input name="netapp_pass" value="netapp_password" size="30">
+                <input name="netapp_pass" value="netapp_password">
                 <input type="submit" name="button" value="REGISTER NETAPP TO CAPIF">
             </div>
         </form>
