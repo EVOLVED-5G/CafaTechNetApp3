@@ -103,7 +103,7 @@ def qos_reporter():
         conn_state = callback_json['monitoringType']
         print(f"Connection state: {conn_state}")
         requests.post(f"{vapp_notif_dest}/conn_state", json=conn_state)
-        return conn_state
+        return {"ack": "TRUE"}
 
 
 @app.route('/capifcallbacks', methods=['POST'])
