@@ -15,7 +15,7 @@ The page allows to change these parameters with a press on the button on the pag
 	
 2) "/subscribe_ue" is used by the vApp for qos awareness and connection monitor subscription.
 	It takes 3 parameters as a JSON:
-		a) ue_id (UE eqipment network identifier, e.g. 10.0.0.1)
+		a) ue_id (UE equipment network identifier, e.g. 10.0.0.1)
 		b) ext_id (UE external identifier, e.g. 10001@domain.com)
 		c) vapp_notif_dest (vApp notification destination)
 	The function behind this endpoint subscribes the UE to the NEF Emulator (quaranteed bit rate subscription for discrete automation, periodic notification every second + connection monitor subscription with notification when connected and when not connected) and writes the notification destination address to the file vapp_notif_dest.txt where the /nefcallbacks endpoint takes its url for forwarding to the vApp.
