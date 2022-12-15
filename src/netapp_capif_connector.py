@@ -1,5 +1,6 @@
 from evolved5g.sdk import CAPIFInvokerConnector
 import emulator_utils
+from os import getenv
 
 
 def capif_connector(capif_netapp_username, capif_netapp_password):
@@ -12,11 +13,11 @@ def capif_connector(capif_netapp_username, capif_netapp_password):
 
     capif_connector = CAPIFInvokerConnector(folder_to_store_certificates=capif_path_for_certs_and_api_key,
                                             capif_host=capif_host,
-                                            capif_http_port="8080",
+                                            capif_http_port=str(getenv("capif_port_http")),
                                             capif_https_port=capif_https_port,
                                             capif_netapp_username=capif_netapp_username,
                                             capif_netapp_password=capif_netapp_password,
-                                            capif_callback_url=f"http://{netapp_ip_and_port}/capifcallbacks",
+                                            capif_callback_url=f"{netapp_ip_and_port}/capifcallbacks",
                                             description= "cafatech netapp_description",
                                             csr_common_name="CAFA-NetApp-3",
                                             csr_organizational_unit="CAFA Tech ou",
