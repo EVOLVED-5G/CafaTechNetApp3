@@ -12,6 +12,11 @@ CORS(app)
 app.config["DEBUG"] = True
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/subscribe_ue', methods=['POST'])
 def subscribe_ue():
     vapp_notif_dest = request.get_json()['vapp_notif_dest']
