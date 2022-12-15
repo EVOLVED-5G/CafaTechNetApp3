@@ -1,6 +1,6 @@
 version: '3'
 services:
-  imm_netapp:
+  cafa_netapp:
     # Name of the built image and of the future container
     image: cafatech-netapp-3
     container_name: cafatech-netapp-3
@@ -23,8 +23,8 @@ services:
       PATH_TO_CERTS: "${path_to_certs}"
 
     build:
-    # Path to the src code
-      context: ./src
+      # Path to the src code
+      context: .
     ports:
       # If port mapping is needed, left is host side and right is container side according to https://docs.docker.com/compose/compose-file/#ports
       # Be careful: if no mapping is specified, Docker will use a random available port on container side!
