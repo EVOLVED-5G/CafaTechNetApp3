@@ -4,7 +4,7 @@ import emulator_utils
 import datetime
 from os import getenv
 
-netapp_id = "CAFA-NetApp-3"
+netapp_id = str(getenv("NETAPP_ID"))
 
 
 def get_connection_monitor():
@@ -25,7 +25,7 @@ def create_connection_monitor_subscription(external_id):
     
     read_and_delete_all_existing_subscriptions()
 
-    notification_destination = str(getenv("callback_address"))
+    notification_destination = str(getenv("CALLBACK_ADDRESS"))
 
     subscription_when_not_connected = connection_monitor.create_subscription(
         netapp_id=netapp_id,

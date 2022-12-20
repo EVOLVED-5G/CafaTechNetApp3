@@ -6,21 +6,24 @@ services:
     container_name: cafatech-netapp-3
     # List of environment variables
     environment:
-      NETAPP_ID: "${netapp_id}"
-      NETAPP_NAME: "${netapp_name}"
-      NETAPP_IP: "${netapp_ip}"
-      SERVER_FOR_VAPP: "${server_for_vapp}"
-      CALLBACK_ADDRESS: "${callback_address}"
-      FRONTEND_CALLBACK_ADDRESS: "${frontend_callback_address}"
-      # NEF variabless
-      NEF_ADDRESS: "${nef_address}"
-      NEF_USER: "${nef_user}"
-      NEF_PASSWORD: "${nef_password}"
+      - NETAPP_ID
+      - NETAPP_NAME
+      - NETAPP_IP
+      - SERVER_FOR_VAPP
+      - CALLBACK_ADDRESS
+      - FRONTEND_CALLBACK_ADDRESS
+      # NEF variables
+      - NEF_ADDRESS
+      - NEF_USER
+      - NEF_PASSWORD
       # CAPIF variabes
-      CAPIF_HOSTNAME: "${capif_hostname}"
-      CAPIF_PORT_HTTP: "${capif_port_http}"
-      CAPIF_PORT_HTTPS: "${capif_port_https}"
-      PATH_TO_CERTS: "${path_to_certs}"
+      - CAPIF_HOSTNAME
+      - CAPIF_PORT_HTTP
+      - CAPIF_PORT_HTTPS
+      - PATH_TO_CERTS
+      # NetApp to CAPIF variables
+      - NETAPP_USER
+      - NETAPP_PASS
 
     build:
       # Path to the src code
@@ -37,6 +40,5 @@ services:
 # This works
 networks:
   default:
-    # name: nef_emulator_services_default
     name: services_default
     external: true

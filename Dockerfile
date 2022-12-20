@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get install nano
 RUN apt-get install -y iproute2
 RUN apt-get install iputils-ping
-RUN pip3 install evolved5g
+RUN pip3 install evolved5g==0.8.5
 RUN pip3 install requests --upgrade
 RUN pip3 install flask
 RUN pip3 install -U flask-cors

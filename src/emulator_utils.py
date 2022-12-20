@@ -1,13 +1,12 @@
 from evolved5g import swagger_client
-from evolved5g.swagger_client import LoginApi, User
+from evolved5g.swagger_client import LoginApi
 from evolved5g.swagger_client.models import Token
-import json
 from os import path, getenv
 
 
 def get_token_for_nef_emulator() -> Token:
-    username = str(getenv("nef_user"))
-    password = str(getenv("nef_password"))
+    username = str(getenv("NEF_USER"))
+    password = str(getenv("NEF_PASSWORD"))
     # User name and pass matches are set in the .env of the docker of NEF_EMULATOR. See
     # https://github.com/EVOLVED-5G/NEF_emulator
     configuration = swagger_client.Configuration()
@@ -28,7 +27,7 @@ def get_api_client(token) -> swagger_client.ApiClient:
 
 
 def get_url_of_the_nef_emulator() -> str:
-    return str(getenv('nef_address'))
+    return str(getenv('NEF_ADDRESS'))
 
 
 def get_folder_path_for_certificates_and_capif_api_key()->str:
@@ -37,18 +36,18 @@ def get_folder_path_for_certificates_and_capif_api_key()->str:
     It contains the certificates and the api.key needed to communicate with the CAPIF server
     """
     current_dir = path.dirname(path.abspath(__file__))
-    capif_dirname = str(getenv("path_to_certs"))
+    capif_dirname = str(getenv("PATH_TO_CERTS"))
     capif_path = path.join(current_dir, capif_dirname)
     return capif_path
 
 
 def get_capif_host()->str:
-    return str(getenv("capif_hostname"))
+    return str(getenv("CAPIF_HOSTNAME"))
 
 
 def get_capif_https_port()->int:
-    return str(getenv("capif_port_https"))
+    return getenv("CAPIF_PORT_HTTPS")
 
 
 def get_netapp_ip_and_port():
-    return str(getenv("netapp_ip"))
+    return str(getenv("NETAPP_IP"))

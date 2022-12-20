@@ -1,9 +1,10 @@
 from evolved5g.sdk import CAPIFInvokerConnector
 import emulator_utils
 from os import getenv
+from datetime import datetime
 
 
-def capif_connector(capif_netapp_username, capif_netapp_password):
+def capif_onboarding(capif_netapp_username, capif_netapp_password):
 
     netapp_ip_and_port = emulator_utils.get_netapp_ip_and_port()
 
@@ -13,7 +14,7 @@ def capif_connector(capif_netapp_username, capif_netapp_password):
 
     capif_connector = CAPIFInvokerConnector(folder_to_store_certificates=capif_path_for_certs_and_api_key,
                                             capif_host=capif_host,
-                                            capif_http_port=str(getenv("capif_port_http")),
+                                            capif_http_port=getenv("CAPIF_PORT_HTTP"),
                                             capif_https_port=capif_https_port,
                                             capif_netapp_username=capif_netapp_username,
                                             capif_netapp_password=capif_netapp_password,
@@ -31,3 +32,7 @@ def capif_connector(capif_netapp_username, capif_netapp_password):
     capif_connector.register_and_onboard_netapp()
 
 
+current_time = datetime.now()
+time_str = current_time.strftime("%y%m%d%H%M%S")
+
+capif_onboarding(f'{str(getenv("NETAPP_USER"))}_{time_str}', str(getenv("NETAPP_PASS")))

@@ -3,9 +3,6 @@ from flask_cors import CORS
 import requests
 import qos_awareness
 import connection_monitor
-import json
-from os import path
-import netapp_capif_connector
 
 app = Flask(__name__)
 CORS(app)
@@ -62,4 +59,3 @@ def capif_reporter():
 if __name__ == '__main__':
     print("initiating")
     app.run(host='0.0.0.0', port=5555)
-
