@@ -6,11 +6,10 @@ from os import path, getenv
 
 def get_token_for_nef_emulator() -> Token:
     username = str(getenv("NEF_USER"))
-    password = str(getenv("NEF_PASSWORD"))
-    # User name and pass matches are set in the .env of the docker of NEF_EMULATOR. See
-    # https://github.com/EVOLVED-5G/NEF_emulator
+    password = str(getenv("NEF_PASS"))
     configuration = swagger_client.Configuration()
     configuration.host = get_url_of_the_nef_emulator()
+    configuration.verify_ssl = False
     api_client = swagger_client.ApiClient(configuration=configuration)
     api_client.select_header_content_type(["application/x-www-form-urlencoded"])
     api = LoginApi(api_client)
@@ -27,18 +26,14 @@ def get_api_client(token) -> swagger_client.ApiClient:
 
 
 def get_url_of_the_nef_emulator() -> str:
-    return str(getenv('NEF_ADDRESS'))
+    return f"{str(getenv('NEF_IP'))}:{str(getenv('NEF_PORT'))}"
 
 
-def get_folder_path_for_certificates_and_capif_api_key()->str:
-    """
-    This is the folder that was provided when you registered the NetApp to CAPIF.
-    It contains the certificates and the api.key needed to communicate with the CAPIF server
-    """
+def get_folder_path_for_netapp_certificates_and_capif_api_key()->str:
     current_dir = path.dirname(path.abspath(__file__))
     capif_dirname = str(getenv("PATH_TO_CERTS"))
-    capif_path = path.join(current_dir, capif_dirname)
-    return capif_path
+    certs_path = path.join(current_dir, capif_dirname)
+    return certs_path
 
 
 def get_capif_host()->str:

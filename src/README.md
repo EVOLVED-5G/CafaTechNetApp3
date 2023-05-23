@@ -1,11 +1,11 @@
-CafaTechNetApp3
-Uses Evolved 5G SDK 0.8.5
+CafaTechNetApp4
+Uses Evolved 5G SDK 1.0.4
 
-The CAPIF and NEF Emulator must be started prior to the current NetApp.
+The CAPIF and NEF Emulator must be started prior to the current Network App.
 Starting the container starts automatically Flask server (using api.py) at port 5555:
 
 Endpoints:
-- “/” web page shows that "CAFA Tech NetApp is working"
+- “/” web page shows that "CAFA Tech Network App is working"
 - “/subscribe_ue” 
 	Takes subscription request with parameters from the vApp and creates
 	QoS and Connection monitor subscription to NEF using environmental 

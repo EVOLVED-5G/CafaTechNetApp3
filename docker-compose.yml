@@ -1,43 +1,35 @@
 version: '3'
 services:
   cafa_netapp:
-    # Name of the built image and of the future container
-    image: cafatech-netapp-3
-    container_name: cafatech-netapp-3
-    # List of environment variables
+    image: cafatech-netapp-4
+    container_name: cafatech-netapp-4
     environment:
       - NETAPP_ID
       - NETAPP_NAME
       - NETAPP_IP
       - SERVER_FOR_VAPP
       - CALLBACK_ADDRESS
-      - FRONTEND_CALLBACK_ADDRESS
-      # NEF variables
-      - NEF_ADDRESS
-      - NEF_USER
-      - NEF_PASSWORD
-      # CAPIF variabes
+      # New
+      - PATH_TO_CERTS
       - CAPIF_HOSTNAME
       - CAPIF_PORT_HTTP
       - CAPIF_PORT_HTTPS
-      - PATH_TO_CERTS
-      # NetApp to CAPIF variables
-      - NETAPP_USER
-      - NETAPP_PASS
-
+      - CAPIF_CALLBACK_URL
+      - CAPIF_CALLBACK_PORT
+      - NEF_USER
+      - NEF_PASS
+      - NEF_IP
+      - NEF_PORT
+      - NEF_CALLBACK_IP
+      - NEF_CALLBACK_PORT
     build:
       # Path to the src code
       context: .
     ports:
-      # If port mapping is needed, left is host side and right is container side according to https://docs.docker.com/compose/compose-file/#ports
-      # Be careful: if no mapping is specified, Docker will use a random available port on container side!
       - "5555:5555"
     extra_hosts:
       - "host.docker.internal:host-gateway"
-      - "capifcore:host-gateway" #Note: syntax without quotes not accepted
-
-# We need to create a network bridge with nef_emulator_default to be able to reach the NEF emulator 
-# This works
+      - "capifcore:host-gateway"
 networks:
   default:
     name: services_default

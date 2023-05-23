@@ -10,7 +10,7 @@ netapp_id = str(getenv("NETAPP_ID"))
 def get_qos_awareness():
     nef_url = emulator_utils.get_url_of_the_nef_emulator()
     token = emulator_utils.get_token_for_nef_emulator()
-    capif_path_for_certs_and_api_key = emulator_utils.get_folder_path_for_certificates_and_capif_api_key()
+    capif_path_for_certs_and_api_key = emulator_utils.get_folder_path_for_netapp_certificates_and_capif_api_key()
     capif_host = emulator_utils.get_capif_host()
     capif_https_port = emulator_utils.get_capif_https_port()
     qos_awareness = QosAwareness(nef_url, token.access_token, capif_path_for_certs_and_api_key, capif_host, capif_https_port)
@@ -20,26 +20,19 @@ def get_qos_awareness():
 def create_quaranteed_bit_rate_subscription_for_discrete_automation(equipment_id):
     
     qos_awareness = get_qos_awareness()
-    
     read_and_delete_all_existing_subscriptions()
-
     network_identifier = QosAwareness.NetworkIdentifier.IP_V4_ADDRESS
-
     notification_destination = str(getenv("CALLBACK_ADDRESS"))
-
     discrete_automation = QosAwareness.GBRQosReference.DISCRETE_AUTOMATION
-    
     gigabyte = 1024 * 1024 * 1024
     usage_threshold = UsageThreshold(duration= None, # not supported
                                     total_volume=10 * gigabyte,  # 10 Gigabytes of total volume
                                     downlink_volume=5 * gigabyte,  # 5 Gigabytes for downlink
                                     uplink_volume=5 * gigabyte  # 5 Gigabytes for uplink
                                     )
-    
     uplink = QosAwareness.QosMonitoringParameter.UPLINK
     # Minimum delay of data package during uplink, in milliseconds
     uplink_threshold = 20
-
     # reporting_mode = QosAwareness.EventTriggeredReportingConfiguration(1)
     reporting_mode = QosAwareness.PeriodicReportConfiguration(1)
 
