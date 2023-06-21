@@ -30,7 +30,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
       - "capifcore:host-gateway"
+    networks:
+      - services_default
 networks:
-  default:
-    name: services_default
+  services_default:
     external: true

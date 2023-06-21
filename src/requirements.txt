@@ -10,7 +10,7 @@ click==8.0.1
 cookiecutter==2.1.1
 coverage==4.5.4
 cryptography==38.0.4
-evolved5g==1.0.4
+evolved5g==1.0.7
 flake8==3.9.2
 Flask==2.2.2
 Flask-Cors==3.0.10

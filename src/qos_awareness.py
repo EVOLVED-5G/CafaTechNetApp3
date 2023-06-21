@@ -9,11 +9,10 @@ netapp_id = str(getenv("NETAPP_ID"))
 
 def get_qos_awareness():
     nef_url = emulator_utils.get_url_of_the_nef_emulator()
-    token = emulator_utils.get_token_for_nef_emulator()
     capif_path_for_certs_and_api_key = emulator_utils.get_folder_path_for_netapp_certificates_and_capif_api_key()
     capif_host = emulator_utils.get_capif_host()
     capif_https_port = emulator_utils.get_capif_https_port()
-    qos_awareness = QosAwareness(nef_url, token.access_token, capif_path_for_certs_and_api_key, capif_host, capif_https_port)
+    qos_awareness = QosAwareness(nef_url, capif_path_for_certs_and_api_key, capif_host, capif_https_port)
     return qos_awareness
 
 

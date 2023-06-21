@@ -7,7 +7,6 @@ RUN apt-get install nano
 RUN apt-get install -y iproute2
 RUN apt-get install iputils-ping
 RUN pip3 install -r /netapp/requirements.txt
-RUN pip3 install requests --upgrade
 EXPOSE 1191
 EXPOSE 5555
 ENTRYPOINT ["./entrypoint.sh"]
