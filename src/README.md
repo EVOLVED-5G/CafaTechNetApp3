@@ -1,5 +1,5 @@
 CafaTechNetApp4
-Uses Evolved 5G SDK 1.0.4
+Uses Evolved 5G SDK 1.0.13
 
 The CAPIF and NEF Emulator must be started prior to the current Network App.
 Starting the container starts automatically Flask server (using api.py) at port 5555:
