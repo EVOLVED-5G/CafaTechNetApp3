@@ -1,0 +1,17 @@
+{
+  "folder_to_store_certificates": "/netapp/certificates",
+  "capif_host": "capifcore",
+  "capif_http_port": "8080",
+  "capif_https_port": "443",
+  "capif_netapp_username": "cafatechnetapp4_230523105906",
+  "capif_netapp_password": "pass123",
+  "capif_callback_url": "host.docker.internal:5555",
+  "description": "cafatech_netapp_description",
+  "csr_common_name": "cafatech_netapp_4",
+  "csr_organizational_unit": "cafatech_ou",
+  "csr_organization": "cafatech_o",
+  "crs_locality": "Tallinn",
+  "csr_state_or_province_name": "Tallinn",
+  "csr_country_name": "ET",
+  "csr_email_address": "info@cafatech.com"
+}

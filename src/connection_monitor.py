@@ -2,17 +2,17 @@ from evolved5g.swagger_client.rest import ApiException
 from evolved5g.sdk import ConnectionMonitor
 import emulator_utils
 import datetime
+from os import getenv
 
-netapp_id = "CAFA-NetApp-3"
+netapp_id = str(getenv("NETAPP_ID"))
 
 
 def get_connection_monitor():
     nef_url = emulator_utils.get_url_of_the_nef_emulator()
-    token = emulator_utils.get_token_for_nef_emulator()
-    capif_path_for_certs_and_api_key=emulator_utils.get_folder_path_for_certificates_and_capif_api_key()
+    capif_path_for_certs_and_api_key=emulator_utils.get_folder_path_for_netapp_certificates_and_capif_api_key()
     capif_host=emulator_utils.get_capif_host()
     capif_https_port=emulator_utils.get_capif_https_port()
-    connection_monitor = ConnectionMonitor(nef_url, token.access_token, capif_path_for_certs_and_api_key, capif_host, capif_https_port)
+    connection_monitor = ConnectionMonitor(nef_url, capif_path_for_certs_and_api_key, capif_host, capif_https_port)
     return connection_monitor
 
 
@@ -24,8 +24,7 @@ def create_connection_monitor_subscription(external_id):
     
     read_and_delete_all_existing_subscriptions()
 
-    netapp_ip_and_port = emulator_utils.get_netapp_ip_and_port()
-    notification_destination = f"http://{netapp_ip_and_port}/nefcallbacks"
+    notification_destination = str(getenv("CALLBACK_ADDRESS"))
 
     subscription_when_not_connected = connection_monitor.create_subscription(
         netapp_id=netapp_id,

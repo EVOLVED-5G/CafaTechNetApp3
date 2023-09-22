@@ -1,0 +1,33 @@
+version: '3'
+services:
+  cafa_netapp:
+    image: cafatech-netapp-4
+    container_name: cafatech-netapp-4
+    environment:
+      - NETAPP_ID
+      - NETAPP_NAME
+      - NETAPP_IP
+      - SERVER_FOR_VAPP
+      - CALLBACK_ADDRESS
+      # New
+      - PATH_TO_CERTS
+      - CAPIF_HOSTNAME
+      - CAPIF_PORT_HTTP
+      - CAPIF_PORT_HTTPS
+      - CAPIF_CALLBACK_URL
+      - CAPIF_CALLBACK_PORT
+      - NEF_USER
+      - NEF_PASS
+      - NEF_IP
+      - NEF_PORT
+      - NEF_CALLBACK_IP
+      - NEF_CALLBACK_PORT
+      - ENVIRONMENT_MODE
+    build:
+      # Path to the src code
+      context: .
+    ports:
+      - "5555:5555"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "capifcore:host-gateway"
