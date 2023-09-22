@@ -22,6 +22,7 @@ services:
       - NEF_PORT
       - NEF_CALLBACK_IP
       - NEF_CALLBACK_PORT
+      - ENVIRONMENT_MODE
     build:
       # Path to the src code
       context: .
@@ -30,8 +31,3 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
       - "capifcore:host-gateway"
-    networks:
-      - services_default
-networks:
-  services_default:
-    external: true
