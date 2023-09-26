@@ -13,6 +13,6 @@ jq -r .capif_https_port=\"$CAPIF_PORT_HTTPS\" /netapp/capif_registration.json >>
 jq -r .capif_callback_url=\"$CAPIF_CALLBACK_URL\" /netapp/capif_registration.json >> tmp.json && mv tmp.json /netapp/capif_registration.json
 jq -r .capif_netapp_username=\"$NETAPP_NAME"_"$timestamp\" /netapp/capif_registration.json >> tmp.json && mv tmp.json /netapp/capif_registration.json
 
-evolved5g register-and-onboard-to-capif --config_file_full_path="/netapp/capif_registration.json" --environment="production"
+evolved5g register-and-onboard-to-capif --config_file_full_path="/netapp/capif_registration.json" --environment="$ENVIRONMENT_MODE"
 
 tail -f /dev/null
